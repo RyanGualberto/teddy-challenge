@@ -1,0 +1,299 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Teddy Challenge - Open Food Facts API",
+    "description": "Documentação da API do desafio Teddy"
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Endpoints relacionados aos produtos"
+    },
+    {
+      "name": "Root",
+      "description": "Endpoints relacionados à raiz da API"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/products/": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para obter todos os produtos.",
+        "parameters": [
+          {
+            "name": "page",
+            "description": "Número da página",
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "Limite de itens por página",
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "description": "Produtos"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/products/{code}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para obter um produto específico.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "description": "Produto"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para atualizar um produto específico.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "description": "Produto"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para remover um produto específico.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "description": "Produto"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Root"
+        ],
+        "description": "Endpoint para obter detalhes da API, status da conexão com o banco de dados, horário da última execução do CRON, tempo online e uso de memória.",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/RootInfo"
+            },
+            "description": "Detalhes da API"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RootInfo": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "example": "OK"
+        },
+        "databaseConnection": {
+          "type": "string",
+          "example": "OK"
+        },
+        "cronLastExecuted": {
+          "type": "string",
+          "example": "16/11/2023, 09:56:04"
+        },
+        "uptime": {
+          "type": "string",
+          "example": "0h 8m 11s"
+        },
+        "memoryUsage": {
+          "type": "object",
+          "properties": {
+            "rss": {
+              "type": "string",
+              "example": "55.60 MB"
+            },
+            "heapTotal": {
+              "type": "string",
+              "example": "19.88 MB"
+            },
+            "heapUsed": {
+              "type": "string",
+              "example": "18.32 MB"
+            }
+          }
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "6554af00d835c8762e733cef"
+        },
+        "code": {
+          "type": "number",
+          "example": 17
+        },
+        "status": {
+          "type": "string",
+          "example": "TRASH"
+        },
+        "imported_t": {
+          "type": "string",
+          "example": "2023-11-16T12:50:10.653Z"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://world-en.openfoodfacts.org/product/0017"
+        },
+        "creator": {
+          "type": "string",
+          "example": "openfoodfacts-contributors"
+        },
+        "created_t": {
+          "type": "number",
+          "example": 1585951158
+        },
+        "last_modified_t": {
+          "type": "number",
+          "example": 1585951160
+        },
+        "product_name": {
+          "type": "string",
+          "example": ""
+        },
+        "quantity": {
+          "type": "string",
+          "example": ""
+        },
+        "brands": {
+          "type": "string",
+          "example": ""
+        },
+        "categories": {
+          "type": "string",
+          "example": ""
+        },
+        "labels": {
+          "type": "string",
+          "example": ""
+        },
+        "cities": {
+          "type": "string",
+          "example": ""
+        },
+        "purchase_places": {
+          "type": "string",
+          "example": ""
+        },
+        "stores": {
+          "type": "string",
+          "example": ""
+        },
+        "ingredients_text": {
+          "type": "string",
+          "example": ""
+        },
+        "traces": {
+          "type": "string",
+          "example": ""
+        },
+        "serving_size": {
+          "type": "string",
+          "example": ""
+        },
+        "serving_quantity": {},
+        "nutriscore_score": {},
+        "nutriscore_grade": {
+          "type": "string",
+          "example": ""
+        },
+        "main_category": {
+          "type": "string",
+          "example": ""
+        },
+        "image_url": {
+          "type": "string",
+          "example": "https://static.openfoodfacts.org/images/products/0017/front_en.3.400.jpg"
+        },
+        "__v": {
+          "type": "number",
+          "example": 0
+        }
+      }
+    }
+  }
+}
