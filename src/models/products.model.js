@@ -4,7 +4,7 @@ const productSchema = new mongoose.Schema({
   code: { type: Number, required: true },
   status: {
     type: String,
-    enum: ["draft", "trash", "published"],
+    enum: ["TRASH", "PUBLISHED"],
     required: true,
   },
   imported_t: { type: Date, required: true },

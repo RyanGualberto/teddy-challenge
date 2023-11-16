@@ -31,7 +31,9 @@ class ProductsRepository {
   }
 
   async delete(code) {
-    await this.model.findOneAndDelete({ code });
+    await this.model.findOneAndUpdate({ code }, {
+      status: "TRASH",
+    });
     return true;
   }
 }

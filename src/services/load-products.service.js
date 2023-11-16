@@ -44,7 +44,7 @@ async function downloadAndProcessFile(fileName, lastProcessedDate) {
 
         log(`Importando produto com o código ${product.code}`);
         product.imported_t = date;
-        product.status = "published";
+        product.status = "PUBLISHED";
 
         await productsRepository.create(product);
         await updateHistoryRepository.update({ lastProcessedDate: date });
