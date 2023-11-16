@@ -6,6 +6,11 @@ class ProductsRepository {
   }
 
   async create(data) {
+    if (await this.getByCode(data.code)) {
+      const product = await this.update(data.code, data);
+      return product;
+    }
+
     const product = await this.model.create(data);
     return product;
   }
