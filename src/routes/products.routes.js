@@ -41,8 +41,7 @@ routes.put("/:code", async (req, res) => {
 routes.delete("/:code", async (req, res) => {
   // #swagger.tags = ['Products']
   // #swagger.description = 'Endpoint para remover um produto específico.'
-  /* #swagger.responses[200] = { 
-                                 schema: { $ref: "#/definitions/Product" },
+  /* #swagger.responses[204] = { 
                                  description: 'Produto' 
                         } */
 
