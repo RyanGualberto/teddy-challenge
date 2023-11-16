@@ -12,7 +12,8 @@ class ProductsController {
   }
 
   async getAll(req, res) {
-    const products = await this.repository.getAll();
+    const { page = 1, limit = 25 } = req.query;
+    const products = await this.repository.getAll(page, limit);
     return res.status(200).json(products);
   }
 

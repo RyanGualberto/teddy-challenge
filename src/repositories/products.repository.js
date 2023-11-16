@@ -15,8 +15,11 @@ class ProductsRepository {
     return product;
   }
 
-  async getAll() {
-    const products = await this.model.find();
+  async getAll(page, limit) {
+    const products = await this.model
+      .find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     return products;
   }
 
@@ -31,9 +34,12 @@ class ProductsRepository {
   }
 
   async delete(code) {
-    await this.model.findOneAndUpdate({ code }, {
-      status: "TRASH",
-    });
+    await this.model.findOneAndUpdate(
+      { code },
+      {
+        status: "TRASH",
+      }
+    );
     return true;
   }
 }
