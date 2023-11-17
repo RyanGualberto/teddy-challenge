@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/teddy_challenge_development");
+const databaseUrl = process.env.DATABASE_URL;
+
+mongoose.connect(databaseUrl);
 
 module.exports = mongoose;
