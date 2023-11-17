@@ -31,6 +31,14 @@ routes.get("/:code", async (req, res) => {
 routes.put("/:code", async (req, res) => {
   // #swagger.tags = ['Products']
   // #swagger.description = 'Endpoint para atualizar um produto específico.'
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Dados do produto',
+        required: true,
+        schema: {
+          $ref: "#/definitions/Product"
+        }
+      } */
   /* #swagger.responses[200] = { 
                              schema: { $ref: "#/definitions/Product" },
                              description: 'Produto' 

@@ -97,6 +97,15 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do produto",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
           }
         ],
         "responses": {
@@ -125,10 +134,7 @@
           }
         ],
         "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/Product"
-            },
+          "204": {
             "description": "Produto"
           },
           "500": {
