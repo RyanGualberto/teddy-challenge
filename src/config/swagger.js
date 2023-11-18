@@ -1,7 +1,7 @@
 require("dotenv").config();
 const swaggerAutogen = require("swagger-autogen")();
 
-const host = PROCESS.ENV.API_HOST || "localhost:3333";
+const host = process.env.API_HOST || "localhost:3333";
 const outputFile = "./swagger_output.json";
 const endpointsFiles = ["./server.js"];
 

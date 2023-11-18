@@ -5,7 +5,7 @@
     "title": "Teddy Challenge - Open Food Facts API",
     "description": "Documentação da API do desafio Teddy"
   },
-  "host": "localhost:3333",
+  "host": "teddy-challenge.onrender.com",
   "basePath": "/",
   "tags": [
     {
@@ -18,7 +18,8 @@
     }
   ],
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "consumes": [
     "application/json"
