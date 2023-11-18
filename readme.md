@@ -41,6 +41,6 @@ Este projeto consiste na implementação de uma REST API para utilizar os dados 
 
 ## Apresentação do Projeto
 
-Para uma apresentação completa do projeto, assista ao vídeo de demonstração disponível em [link_da_apresentação](#).
+Para uma apresentação completa do projeto, assista ao vídeo de demonstração disponível em [link_da_apresentação](https://www.loom.com/share/58f0842173b041eaa757ef46191cfcc1).
 
 Este é um desafio proposto pela Coodesh.
