@@ -6,20 +6,24 @@ class RootController {
   }
 
   async get(req, res) {
-    const { status, lastProcessedDate } =
-      await this.updateHistoryRepository.getLast();
+    const { lastProcessedDate } = await this.updateHistoryRepository.getLast();
     const uptime = process.uptime();
     const memoryUsage = process.memoryUsage();
 
-    const formattedDate = new Date(lastProcessedDate).toLocaleString("pt-BR", {
-      timeZone: "America/Sao_Paulo",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
+    if (lastProcessedDate) {
+      const formattedDate = new Date(lastProcessedDate).toLocaleString(
+        "pt-BR",
+        {
+          timeZone: "America/Sao_Paulo",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }
+      );
+    }
 
     const formattedUptime = `${Math.floor(uptime / 3600)}h ${Math.floor(
       (uptime % 3600) / 60
@@ -34,7 +38,7 @@ class RootController {
     const responseData = {
       status: "OK",
       databaseConnection: "OK",
-      cronLastExecuted: formattedDate,
+      cronLastExecuted: formattedDate || "N/A",
       uptime: formattedUptime,
       memoryUsage: formattedMemoryUsage,
     };
