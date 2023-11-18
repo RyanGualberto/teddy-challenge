@@ -11,7 +11,7 @@ class RootController {
     const memoryUsage = process.memoryUsage();
     let formattedDate = "N/A";
 
-    if (updateHistorylast) {
+    if (updateHistory) {
       formattedDate = new Date(updateHistory.lastProcessedDate).toLocaleString(
         "pt-BR",
         {
