@@ -6,12 +6,13 @@ class RootController {
   }
 
   async get(req, res) {
-    const { lastProcessedDate } = await this.updateHistoryRepository.getLast();
+    const updateHistory = await this.updateHistoryRepository.getLast();
     const uptime = process.uptime();
     const memoryUsage = process.memoryUsage();
+    let formattedDate = "N/A";
 
     if (lastProcessedDate) {
-      const formattedDate = new Date(lastProcessedDate).toLocaleString(
+      formattedDate = new Date(updateHistory.lastProcessedDate).toLocaleString(
         "pt-BR",
         {
           timeZone: "America/Sao_Paulo",
@@ -38,7 +39,7 @@ class RootController {
     const responseData = {
       status: "OK",
       databaseConnection: "OK",
-      cronLastExecuted: formattedDate || "N/A",
+      cronLastExecuted: formattedDate,
       uptime: formattedUptime,
       memoryUsage: formattedMemoryUsage,
     };
