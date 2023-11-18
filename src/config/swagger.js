@@ -12,7 +12,7 @@ const doc = {
   },
   host: host,
   basePath: "/",
-  schemes: ["http"],
+  schemes: ["http", "https"],
   consumes: ["application/json"],
   produces: ["application/json"],
   tags: [
