@@ -38,9 +38,9 @@ async function downloadAndProcessFile(fileName, lastProcessedDate) {
 
         product.code = +product.code.replace(/\W/g, "");
 
-        if (productModifiedAt < lastProcessedDate) {
-          continue;
-        }
+        // if (productModifiedAt < lastProcessedDate) {
+        //   continue;
+        // }
 
         log(`Importando produto com o código ${product.code}`);
         product.imported_t = date;
